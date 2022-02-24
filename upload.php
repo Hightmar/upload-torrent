@@ -30,6 +30,7 @@ if(isset($_POST['submit'])){
             $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
             $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName);
 
+            // Check file extension
             if (!in_array($fileExtension,$fileExtensionsAllowed)) {
                 $errors[] = "Extension non autorisée " . $fileName;
                 $fileError = $fileError + 1;
@@ -44,17 +45,19 @@ if(isset($_POST['submit'])){
                 $fileError = $fileError + 1;
             }
 
+            // Check file size (bit)
             if ($fileSize > 4000000) {
                 $errors[] = "Fichier trop lourd (4 MO) " . $fileName;
                 $fileError = $fileError + 1;
             }
 
+            // Check if file exist
             if (file_exists($uploadPath)) {
                 $errors[] = "Le fichier existe déjà " . $fileName;
                 $fileError = $fileError + 1;
             }
 
-
+            // If no error, upload
             if ($fileError < 1 ) {
                 $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
 
@@ -65,6 +68,8 @@ if(isset($_POST['submit'])){
 
             }
         }
+
+        // Display all errors
         if (!empty($errors)) {
             if (sizeof($errors) > 1){
                 echo "Erreurs trouvées <br>";
