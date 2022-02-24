@@ -28,6 +28,23 @@
             <input type="file" name="torrent_file[]" class="custom-file-input" id="chooseFile" multiple>
             <label class="custom-file-label" for="chooseFile">Select file</label>
         </div>
+
+<!--        --><?php
+//            $currentDirectory = getcwd();
+//            $uploadDirectory = "/uploads";
+//            $uploadPath = $currentDirectory . $uploadDirectory;
+//
+//            $directories = glob($uploadPath . '/*' , GLOB_ONLYDIR);
+//
+//            echo "<select name='repertoire' id='repertoire' class='custom-select'>";
+//            echo "<option value=''> Root </option>";
+//            foreach ($directories as $directory){
+//                $directory = strstr($directory, 'dir');
+//                echo "<option value='".$directory."'>".$directory."</option>" ;
+//            }
+//
+//            echo "</select><br>";
+//        ?>
         <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">
             Upload Files
         </button>
@@ -40,26 +57,26 @@
     <?php }?>
 </div>
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script>
-    $(function() {
-        // Multiple images preview with JavaScript
-        var multiImgPreview = function(input, imgPreviewPlaceholder) {
-            if (input.files) {
-                var filesAmount = input.files.length;
-                for (i = 0; i < filesAmount; i++) {
-                    var reader = new FileReader();
-                    reader.onload = function(event) {
-                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
-                    }
-                    reader.readAsDataURL(input.files[i]);
-                }
-            }
-        };
-        $('#chooseFile').on('change', function() {
-            multiImgPreview(this, 'div.imgGallery');
-        });
-    });
-</script>
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<!--<script>-->
+<!--    $(function() {-->
+<!--        // Multiple images preview with JavaScript-->
+<!--        var multiImgPreview = function(input, imgPreviewPlaceholder) {-->
+<!--            if (input.files) {-->
+<!--                var filesAmount = input.files.length;-->
+<!--                for (i = 0; i < filesAmount; i++) {-->
+<!--                    var reader = new FileReader();-->
+<!--                    reader.onload = function(event) {-->
+<!--                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);-->
+<!--                    }-->
+<!--                    reader.readAsDataURL(input.files[i]);-->
+<!--                }-->
+<!--            }-->
+<!--        };-->
+<!--        $('#chooseFile').on('change', function() {-->
+<!--            multiImgPreview(this, 'div.imgGallery');-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>

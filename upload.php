@@ -1,5 +1,4 @@
 <?php
-// Database
 if(isset($_POST['submit'])){
     $currentDirectory = getcwd();
     //$whereUpload = $_POST['repertoire'];
@@ -13,8 +12,6 @@ if(isset($_POST['submit'])){
 
     $fileExtensionsAllowed = array('torrent');
 
-    print("<pre>".print_r($_FILES,true)."</pre>");
-
     // Velidate if files exist
     if (!empty(array_filter($_FILES['torrent_file']['name']))) {
 
@@ -26,7 +23,6 @@ if(isset($_POST['submit'])){
             $fileSize = $_FILES['torrent_file']['size'][$id];
             $fileTmpName  = $_FILES['torrent_file']['tmp_name'][$id];
             $fileType = $_FILES['torrent_file']['type'][$id];
-            $fileExtensionExplode = explode('.',$fileName);
             $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
             $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName);
 
@@ -71,10 +67,10 @@ if(isset($_POST['submit'])){
 
         // Display all errors
         if (!empty($errors)) {
-            if (sizeof($errors) > 1){
-                echo "Erreurs trouvées <br>";
+            if (sizeof($errors) == 1){
+                echo "Erreur trouvé <br>";
             } else {
-                echo "Erreur trouvée <br>";
+                echo "Erreurs trouvées <br>";
             }
             foreach ($errors as $error) {
                 echo  $error . "<br>";
@@ -82,3 +78,6 @@ if(isset($_POST['submit'])){
         }
     }
 }
+
+echo "<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'>";
+echo "<a href='index.php' class='btn btn-primary btn-lg active' role='button' aria-pressed='true'>Retour</a>";
