@@ -1,4 +1,5 @@
 <?php
+
 if(isset($_POST['submit'])){
     $currentDirectory = getcwd();
     //$whereUpload = $_POST['repertoire'];
@@ -25,6 +26,11 @@ if(isset($_POST['submit'])){
             $fileType = $_FILES['torrent_file']['type'][$id];
             $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
             $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName);
+            $isDir = $currentDirectory . $uploadDirectory;
+
+            if (!is_dir($isDir)) {
+                mkdir($isDir, 0760, true);
+            }
 
             // Check file extension
             if (!in_array($fileExtension,$fileExtensionsAllowed)) {
@@ -61,7 +67,6 @@ if(isset($_POST['submit'])){
                     echo "Le fichier <b>" . basename($fileName) . "</b> a été upload <br>";
                     //require_once("/var/www/rutorrent/php/addtorrent.php");
                 }
-
             }
         }
 

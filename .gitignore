@@ -6,3 +6,5 @@ add_torrent
 upload.iml
 
 .idea/
+uploads/
+*.torrent
