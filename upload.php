@@ -68,6 +68,7 @@ if(isset($_POST['submit'])){
                     echo "Le fichier <b>" . basename($fileName) . "</b> a été upload <br>";
                     $_FILES['torrent_file']['tmp_name'] = $uploadPath;
                     $_REQUEST['result'] = "";
+                    $_REQUEST['name'] = $_FILES['torrent_file']['name'][$id];
                     require_once("/var/www/rutorrent/php/addtorrent.php");
                 }
             }
