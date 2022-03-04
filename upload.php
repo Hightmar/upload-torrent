@@ -4,6 +4,7 @@ if(isset($_POST['submit'])){
     $currentDirectory = getcwd();
     //$whereUpload = $_POST['repertoire'];
     $errors = [];
+    $_REQUEST = [];
 
     if (!empty($whereUpload)){
         $uploadDirectory = "/uploads/"/*. $whereUpload ."/"*/;
@@ -65,7 +66,9 @@ if(isset($_POST['submit'])){
 
                 if ($didUpload) {
                     echo "Le fichier <b>" . basename($fileName) . "</b> a été upload <br>";
-                    //require_once("/var/www/rutorrent/php/addtorrent.php");
+                    $_FILES['torrent_file']['tmp_name'] = $uploadPath;
+                    $_REQUEST['result'] = "";
+                    require_once("/var/www/rutorrent/php/addtorrent.php");
                 }
             }
         }
