@@ -1,5 +1,4 @@
 <?php
-
 if(isset($_POST['submit'])){
     $currentDirectory = getcwd();
     //$whereUpload = $_POST['repertoire'];
@@ -30,7 +29,7 @@ if(isset($_POST['submit'])){
             $isDir = $currentDirectory . $uploadDirectory;
 
             if (!is_dir($isDir)) {
-                mkdir($isDir, 0760, true);
+                mkdir($isDir, 0777, true);
             }
 
             // Check file extension
