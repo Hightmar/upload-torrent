@@ -60,23 +60,17 @@ if(isset($_POST['submit'])){
 
             // If no error, upload
             if ($fileError < 1 ) {
-//                $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
-//                if ($didUpload) {
-//                    echo "Le fichier <b>" . basename($fileName) . "</b> a Ã©tÃ© upload <br>";
-                    $_FILES['torrent_file']['tmp_name'][0] = $uploadPath;
-//                    $_REQUEST['result'] = "";
-//                    $_REQUEST['name'] = $_FILES['torrent_file']['name'][$id];
+
                     require_once("/var/www/rutorrent/php/addtorrent.php");
-                }
             }
         }
 
         // Display all errors
         if (!empty($errors)) {
             if (sizeof($errors) == 1){
-                echo "Erreur trouvÃ© <br>";
+                echo "Erreur trouvée <br>";
             } else {
-                echo "Erreurs trouvÃ©es <br>";
+                echo "Erreurs trouvées <br>";
             }
             foreach ($errors as $error) {
                 echo  $error . "<br>";
