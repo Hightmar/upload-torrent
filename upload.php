@@ -61,8 +61,13 @@ if(isset($_POST['submit'])){
             // If no error, upload
             if ($fileError < 1 ) {
 
+//                if ($didUpload) {
+//                    echo "Le fichier <b>" . basename($fileName) . "</b> a été upload <br>";
+//                    $_FILES['torrent_file']['tmp_name'] = $uploadPath;
+//                    $_REQUEST['result'] = "";
+//                    $_REQUEST['name'] = $_FILES['torrent_file']['name'][$id];
                     require_once("/var/www/rutorrent/php/addtorrent.php");
-            }
+//                }
         }
 
         // Display all errors
